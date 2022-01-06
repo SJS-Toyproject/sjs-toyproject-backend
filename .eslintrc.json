@@ -1,0 +1,31 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true,
+        "node": true,
+        "jest": true
+    },
+    "extends": [
+        "google",
+        "plugin:prettier/recommended",
+        "plugin:@typescript-eslint/recommended",
+        "prettier",
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": 13,
+        "project": "tsconfig.json",
+        "sourceType": "module"
+    },
+    "plugins": [
+        "@typescript-eslint"
+    ],
+    "ignorePatterns": [
+        ".eslintrc.json",
+        "**/migrations/*",
+        "**/seeds/*"
+    ],
+    "rules": {
+        "strict": 0
+    }
+}
