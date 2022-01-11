@@ -1,7 +1,14 @@
-import { Column, CreateDateColumn, DeleteDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import {
+    Column,
+    CreateDateColumn,
+    DeleteDateColumn,
+    Entity,
+    PrimaryGeneratedColumn,
+    UpdateDateColumn,
+} from 'typeorm';
 
 @Entity('user')
-export class User{
+export class User {
     @PrimaryGeneratedColumn('increment')
     id: number;
 
@@ -9,7 +16,7 @@ export class User{
     name: string;
 
     @Column({
-        nullable: true
+        nullable: true,
     })
     phone: string;
 
@@ -30,10 +37,10 @@ export class User{
 
     @CreateDateColumn()
     createdAt: Date;
-    
+
     @UpdateDateColumn()
     updatedAt: Date;
-    
+
     @DeleteDateColumn()
     deletedAt: Date | null;
 }
