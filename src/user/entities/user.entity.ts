@@ -5,10 +5,9 @@ import {
     DeleteDateColumn,
     Entity,
     PrimaryGeneratedColumn,
-    UpdateDateColumn
-} from "typeorm";
+} from 'typeorm';
 
-@Entity('users')
+@Entity('user')
 export class User {
     @PrimaryGeneratedColumn('increment')
     @ApiProperty({ description: '사용자의 id' })
@@ -34,7 +33,7 @@ export class User {
     name: string;
 
     @Column({
-        nullable: true
+        nullable: true,
     })
     @ApiProperty({ description: '사용자 연락처' })
     phone: string;
