@@ -7,6 +7,7 @@ import { UserModule } from './user/user.module';
 import * as ormconfig from '../ormconfig';
 import { APP_FILTER } from '@nestjs/core';
 import { HttpExceptionFilter } from './http.exception';
+import { AreaModule } from './area/area.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { HttpExceptionFilter } from './http.exception';
     }),
     TypeOrmModule.forRoot(ormconfig),
     UserModule,
+    AreaModule,
   ],
   controllers: [AppController],
   providers: [
