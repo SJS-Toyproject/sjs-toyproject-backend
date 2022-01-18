@@ -1,5 +1,6 @@
-import { Injectable } from "@nestjs/common";
+import { Injectable, NotFoundException } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
+import { Err } from "src/error";
 import { Repository } from "typeorm";
 import { CreateAreaDto } from "./dto/create-area.dto";
 import { Area } from "./entities/area.entity";
@@ -11,11 +12,27 @@ export class AreaService {
         private readonly areaRepository: Repository<Area>
     ) { }
 
-    async create(createAreaDto: CreateAreaDto) {
-        const createArea = await this.areaRepository.save({
+    async create(createAreaDto: CreateAreaDto): Promise<Area> {
+        let createArea;
+        const target = await this.areaRepository.findOne({
             name: createAreaDto.name
         });
 
+        if (target == null) {
+            createArea = await this.areaRepository.save({
+                name: createAreaDto.name
+            });
+        }
+        else {
+            throw new NotFoundException(Err.Area.ALREADY_EXIST);
+        }
         return createArea;
+    }
+
+    async findAll() {
+        const areaList = await this.areaRepository
+            .createQueryBuilder('areas')
+            .getMany();
+        return areaList;
     }
 }

@@ -1,4 +1,4 @@
-import { Body, Post, UseFilters } from "@nestjs/common";
+import { Body, Get, Post, UseFilters } from "@nestjs/common";
 import { Controller } from "@nestjs/common";
 import { ApiTags } from "@nestjs/swagger";
 import { HttpExceptionFilter } from "src/http.exception";
@@ -19,5 +19,11 @@ export class AreaController {
     @ApiDocs.create('새로운 지구 추가 API')
     create(@Body() createAreaDto: CreateAreaDto): Promise<Area> {
         return this.areaService.create(createAreaDto);
+    }
+
+    @Get()
+    @ApiDocs.findAll('모든 지구 목록 API')
+    findAll() {
+        return this.areaService.findAll();
     }
 }
