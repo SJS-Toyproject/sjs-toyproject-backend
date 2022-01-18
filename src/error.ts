@@ -2,7 +2,7 @@ export const Err = {
     Area: {
         NOT_FOUND: {
             code: 0,
-            message: '존재하지 않는 지구입니다.'
+            message: '존재하지 않는 지구 이름입니다.'
         },
         ALREADY_EXIST: {
             code: 1,

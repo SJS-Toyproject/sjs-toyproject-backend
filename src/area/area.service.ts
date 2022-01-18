@@ -12,9 +12,9 @@ export class AreaService {
         private readonly areaRepository: Repository<Area>
     ) { }
 
-    async create(createAreaDto: CreateAreaDto) {
+    async create(createAreaDto: CreateAreaDto): Promise<Area> {
         let createArea;
-        const target = this.areaRepository.findOne({
+        const target = await this.areaRepository.findOne({
             name: createAreaDto.name
         });
 
