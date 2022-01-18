@@ -25,4 +25,20 @@ export const ApiDocs: SwaggerMethodDoc<AreaController> = {
             })
         )
     },
+    findAll(summary) {
+        return applyDecorators(
+            ApiOperation({
+                summary,
+                description: '모든 지구의 이름을 가져옵니다.'
+            }),
+            ApiResponse({
+                status: 201,
+                description: 'Successfully created!!',
+            }),
+            ApiResponse({
+                status: 403,
+                description: 'Forbidden.',
+            })
+        )
+    }
 };

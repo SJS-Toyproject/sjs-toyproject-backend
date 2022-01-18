@@ -1,5 +1,6 @@
-import { Injectable } from "@nestjs/common";
+import { Injectable, NotFoundException } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
+import { Err } from "src/error";
 import { Repository } from "typeorm";
 import { CreateAreaDto } from "./dto/create-area.dto";
 import { Area } from "./entities/area.entity";
@@ -17,5 +18,12 @@ export class AreaService {
         });
 
         return createArea;
+    }
+
+    async findAll() {
+        const areaList = await this.areaRepository
+            .createQueryBuilder('areas')
+            .getMany();
+        return areaList;
     }
 }
