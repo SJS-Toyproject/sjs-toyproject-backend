@@ -2,6 +2,7 @@ import { applyDecorators } from "@nestjs/common";
 import { ApiOperation, ApiResponse } from "@nestjs/swagger";
 import { AreaController } from "./area.controller";
 import { CreateAreaResponseDto } from "./dto/create-area-response.dto";
+import { FindAllAreaDto } from "./dto/find-all-area-response.dto";
 
 type SwaggerMethodDoc<T> = {
     [K in keyof T]: (description: string) => MethodDecorator;
@@ -34,6 +35,7 @@ export const ApiDocs: SwaggerMethodDoc<AreaController> = {
             ApiResponse({
                 status: 201,
                 description: 'Successfully created!!',
+                type: FindAllAreaDto,
             }),
             ApiResponse({
                 status: 403,
