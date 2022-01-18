@@ -13,10 +13,19 @@ export class AreaService {
     ) { }
 
     async create(createAreaDto: CreateAreaDto) {
-        const createArea = await this.areaRepository.save({
+        let createArea;
+        const target = this.areaRepository.findOne({
             name: createAreaDto.name
         });
 
+        if (target == null) {
+            createArea = await this.areaRepository.save({
+                name: createAreaDto.name
+            });
+        }
+        else {
+            throw new NotFoundException(Err.Area.ALREADY_EXIST);
+        }
         return createArea;
     }
 
