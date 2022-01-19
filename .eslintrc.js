@@ -23,9 +23,10 @@ module.exports = {
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
-    'new-cap': 'error',
+    'new-cap': 0,
     'require-jsdoc': 0,
     'no-unused-vars': 'off',
+    'object-curly-spacing': 'always',
     strict: 0,
   },
 };
