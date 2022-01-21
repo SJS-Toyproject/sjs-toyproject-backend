@@ -1,8 +1,9 @@
 import { Body, Controller, Delete, Get, Param, Post, UseFilters } from "@nestjs/common";
 import { ApiTags } from "@nestjs/swagger";
 import { HttpExceptionFilter } from "src/http.exception";
-import { ApiDocs } from "src/user/user.docs";
+import { ApiDocs } from "./campus.docs";
 import { CampusService } from "./campus.service";
+import { CreateCampusDto } from "./dto/create-area.dto";
 import { Campus } from "./entities/campus.entity";
 
 @Controller('campus')
@@ -21,11 +22,11 @@ export class CampusController {
 
     @Get()
     @ApiDocs.findAreaCampusById('특정 캠퍼스 찾기 API')
-    findAreaCampusById(@Param('area_id') area_id: number): Promise<Campus> {
-        return this.campusService.find(+area_id);
+    findAreaCampusById(@Param('area_id') area_id: number) {
+        return this.campusService.findAreaCampusById(+area_id);
     }
 
-    @Delete('/:id')
+    @Delete(':id')
     @ApiDocs.remove('캠퍼스 이름 삭제 API')
     remove(@Param('id') id: string) {
         return this.campusService.remove(+id);
