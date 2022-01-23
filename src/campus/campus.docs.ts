@@ -3,7 +3,6 @@ import { ApiOperation, ApiResponse } from "@nestjs/swagger";
 import { CampusController } from "./campus.controller";
 import { CreateCampusResponseDto } from "./dto/create-campus-response.dto";
 import { FindCampusResponseDto } from "./dto/find-campus-response.dto";
-import { UpdateCampusDto } from "./dto/update-campus.dto";
 
 type SwaggerMethodDoc<T> = {
     [K in keyof T]: (description: string) => MethodDecorator;
