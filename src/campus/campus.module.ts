@@ -17,4 +17,4 @@ import { Campus } from "./entities/campus.entity";
         },
     ]
 })
-export class AreaModule { }
+export class CampusModule { }

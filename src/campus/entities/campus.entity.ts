@@ -3,6 +3,7 @@ import {
     CreateDateColumn,
     DeleteDateColumn,
     Entity,
+    JoinColumn,
     ManyToOne,
     OneToMany,
     PrimaryGeneratedColumn,
@@ -21,9 +22,13 @@ export class Campus {
     @Column()
     name!: string;
 
+    @Column()
+    areaId: number;
+
     /* Relations */
 
     @ManyToOne(() => Area, area => area.campusList, { onDelete: 'CASCADE' })
+    @JoinColumn({ name: 'areaId', referencedColumnName: 'id' })
     area!: Area;
 
     @OneToMany(() => User, user => user.campus)

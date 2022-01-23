@@ -1,9 +1,10 @@
-import { Body, Controller, Delete, Get, Param, Post, UseFilters } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, Patch, Post, UseFilters } from "@nestjs/common";
 import { ApiTags } from "@nestjs/swagger";
 import { HttpExceptionFilter } from "src/http.exception";
 import { ApiDocs } from "./campus.docs";
 import { CampusService } from "./campus.service";
-import { CreateCampusDto } from "./dto/create-area.dto";
+import { CreateCampusDto } from "./dto/create-campus.dto";
+import { UpdateCampusDto } from "./dto/update-campus.dto";
 import { Campus } from "./entities/campus.entity";
 
 @Controller('campus')
@@ -20,8 +21,14 @@ export class CampusController {
         return this.campusService.create(createCampusDto)
     }
 
-    @Get()
-    @ApiDocs.findAreaCampusById('특정 캠퍼스 찾기 API')
+    @Patch()
+    @ApiDocs.update('캠퍼스 이름/지구 수정 API')
+    update(@Body() updateCampusDto: UpdateCampusDto) {
+        return this.campusService.update(updateCampusDto)
+    }
+
+    @Get(':area_id')
+    @ApiDocs.findAreaCampusById('지구에 속한 캠퍼스 목록 API')
     findAreaCampusById(@Param('area_id') area_id: number) {
         return this.campusService.findAreaCampusById(+area_id);
     }

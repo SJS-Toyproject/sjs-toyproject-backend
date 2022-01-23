@@ -8,6 +8,7 @@ import * as ormconfig from '../ormconfig';
 import { APP_FILTER } from '@nestjs/core';
 import { HttpExceptionFilter } from './http.exception';
 import { AreaModule } from './area/area.module';
+import { CampusModule } from './campus/campus.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { AreaModule } from './area/area.module';
     TypeOrmModule.forRoot(ormconfig),
     UserModule,
     AreaModule,
+    CampusModule
   ],
   controllers: [AppController],
   providers: [
