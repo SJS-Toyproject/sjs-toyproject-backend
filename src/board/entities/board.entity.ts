@@ -19,6 +19,9 @@ export class Board {
     id: number;
 
     @Column()
+    title: string;
+
+    @Column()
     content!: string;
 
     /* Relations */
