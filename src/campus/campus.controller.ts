@@ -35,7 +35,7 @@ export class CampusController {
 
     @Delete(':id')
     @ApiDocs.remove('캠퍼스 이름 삭제 API')
-    remove(@Param('id') id: string) {
+    remove(@Param('id') id: number) {
         return this.campusService.remove(+id);
     }
 }
