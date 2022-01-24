@@ -1,14 +1,15 @@
 import { applyDecorators } from "@nestjs/common";
 import { ApiOperation, ApiResponse } from "@nestjs/swagger";
-import { CampusController } from "./campus.controller";
-import { CreateCampusResponseDto } from "./dto/create-campus-response.dto";
-import { FindCampusResponseDto } from "./dto/find-campus-response.dto";
+import { BoardController } from "./board.controller";
+import { CreateBoardResponseDto } from "./dto/create-board-response.dto";
+import { FindAllBoardResponseDto } from "./dto/find-all-board-response.dto";
+import { UpdateBoardDto } from "./dto/update-board.dto";
 
 type SwaggerMethodDoc<T> = {
     [K in keyof T]: (description: string) => MethodDecorator;
 };
 
-export const ApiDocs: SwaggerMethodDoc<CampusController> = {
+export const ApiDocs: SwaggerMethodDoc<BoardController> = {
     create(summary) {
         return applyDecorators(
             ApiOperation({
@@ -18,7 +19,7 @@ export const ApiDocs: SwaggerMethodDoc<CampusController> = {
             ApiResponse({
                 status: 201,
                 description: 'Successfully created!!',
-                type: CreateCampusResponseDto,
+                type: CreateBoardResponseDto,
             }),
             ApiResponse({
                 status: 403,
@@ -35,7 +36,7 @@ export const ApiDocs: SwaggerMethodDoc<CampusController> = {
             ApiResponse({
                 status: 201,
                 description: 'Successfully updated!!',
-                type: CreateCampusResponseDto,
+                type: UpdateBoardDto,
             }),
             ApiResponse({
                 status: 403,
@@ -43,7 +44,7 @@ export const ApiDocs: SwaggerMethodDoc<CampusController> = {
             })
         );
     },
-    findAreaCampusById(summary) {
+    findAll(summary) {
         return applyDecorators(
             ApiOperation({
                 summary,
@@ -52,7 +53,7 @@ export const ApiDocs: SwaggerMethodDoc<CampusController> = {
             ApiResponse({
                 status: 201,
                 description: 'Successfully Find!!',
-                type: FindCampusResponseDto,
+                type: FindAllBoardResponseDto,
             }),
             ApiResponse({
                 status: 403,

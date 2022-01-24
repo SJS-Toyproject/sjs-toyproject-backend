@@ -9,6 +9,7 @@ import { APP_FILTER } from '@nestjs/core';
 import { HttpExceptionFilter } from './http.exception';
 import { AreaModule } from './area/area.module';
 import { CampusModule } from './campus/campus.module';
+import { BoardModule } from './board/board.module';
 
 @Module({
   imports: [
@@ -19,7 +20,8 @@ import { CampusModule } from './campus/campus.module';
     TypeOrmModule.forRoot(ormconfig),
     UserModule,
     AreaModule,
-    CampusModule
+    CampusModule,
+    BoardModule,
   ],
   controllers: [AppController],
   providers: [
