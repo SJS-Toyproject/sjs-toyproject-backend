@@ -3,9 +3,11 @@ import {
     CreateDateColumn,
     DeleteDateColumn,
     Entity,
+    JoinColumn,
     ManyToOne,
     OneToMany,
     PrimaryGeneratedColumn,
+    RelationId,
     UpdateDateColumn
 } from "typeorm";
 import { ApiProperty } from "@nestjs/swagger";
@@ -28,6 +30,9 @@ export class Comment {
 
     @ManyToOne(() => Board, board => board.commentList)
     board!: Board;
+
+    @RelationId((comment: Comment) => comment.board) // you need to specify target relation
+    boardId: number;
 
     /* Date Columns */
 
