@@ -1,15 +1,15 @@
 import { applyDecorators } from "@nestjs/common";
 import { ApiOperation, ApiResponse } from "@nestjs/swagger";
-import { BoardController } from "./board.controller";
-import { CreateBoardResponseDto } from "./dto/create-board-response.dto";
-import { FindAllBoardResponseDto } from "./dto/find-all-board-response.dto";
-import { UpdateBoardDto } from "./dto/update-board.dto";
+import { PostController } from "./post.controller";
+import { CreatePostResponseDto } from "./dto/create-post-response.dto";
+import { FindAllPostResponseDto } from "./dto/find-all-post-response.dto";
+import { UpdatePostDto } from "./dto/update-post.dto";
 
 type SwaggerMethodDoc<T> = {
     [K in keyof T]: (description: string) => MethodDecorator;
 };
 
-export const ApiDocs: SwaggerMethodDoc<BoardController> = {
+export const ApiDocs: SwaggerMethodDoc<PostController> = {
     create(summary) {
         return applyDecorators(
             ApiOperation({
@@ -19,7 +19,7 @@ export const ApiDocs: SwaggerMethodDoc<BoardController> = {
             ApiResponse({
                 status: 201,
                 description: 'Successfully created!!',
-                type: CreateBoardResponseDto,
+                type: CreatePostResponseDto,
             }),
             ApiResponse({
                 status: 403,
@@ -36,7 +36,7 @@ export const ApiDocs: SwaggerMethodDoc<BoardController> = {
             ApiResponse({
                 status: 201,
                 description: 'Successfully updated!!',
-                type: UpdateBoardDto,
+                type: UpdatePostDto,
             }),
             ApiResponse({
                 status: 403,
@@ -53,7 +53,7 @@ export const ApiDocs: SwaggerMethodDoc<BoardController> = {
             ApiResponse({
                 status: 201,
                 description: 'Successfully Find!!',
-                type: FindAllBoardResponseDto,
+                type: FindAllPostResponseDto,
             }),
             ApiResponse({
                 status: 403,

@@ -1,6 +1,6 @@
 import { NotFoundException } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
-import { Post } from "src/board/entities/board.entity";
+import { Post } from "src/post/entities/post.entity";
 import { User } from "src/user/entities/user.entity";
 import { Repository } from "typeorm";
 import { CreateCommentDto } from "./dto/create-comment.dto";
@@ -24,7 +24,7 @@ export class CommentService {
             throw new NotFoundException();
         }
 
-        const user = await this.PostRepository.findOne(userId);
+        const user = await this.UserRepository.findOne(userId);
         if (user === undefined) {
             throw new NotFoundException();
         }
@@ -41,8 +41,8 @@ export class CommentService {
         return updateComment;
     }
 
-    async findCommentById(id: number): Promise<Comment[]> {
-        const post = await this.PostRepository.findOne({ postId });
+    async findCommentById(postId: number): Promise<Comment[]> {
+        const post = await this.PostRepository.findOne(postId);
         const commentList = await this.CommentRepository.find({ post: post });
         return commentList;
     }

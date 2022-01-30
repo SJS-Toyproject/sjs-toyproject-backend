@@ -12,24 +12,24 @@ import { ApiProperty } from "@nestjs/swagger";
 import { User } from "src/user/entities/user.entity";
 import { Comment } from "src/comment/entities/comment.entity"
 
-@Entity('boards')
-export class Board {
+@Entity('post')
+export class Post {
     @PrimaryGeneratedColumn('increment')
     @ApiProperty({ description: '게시물 id' })
     id: number;
 
-    @Column()
+    @Column({ comment: '게시글 제목' })
     title: string;
 
-    @Column()
+    @Column({ comment: '게시글 내용' })
     content!: string;
 
     /* Relations */
 
-    @ManyToOne(() => User, user => user.boardList, { onDelete: 'CASCADE' })
-    user!: User;
+    @ManyToOne(() => User, user => user.postList, { onDelete: 'CASCADE' })
+    user: User;
 
-    @OneToMany(() => Comment, comment => comment.board)
+    @OneToMany(() => Comment, comment => comment.post, { onDelete: 'CASCADE' })
     commentList: Comment[];
 
     /* Date Columns */

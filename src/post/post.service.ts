@@ -1,16 +1,16 @@
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
-import { CreateBoardDto } from "./dto/create-board.dto";
-import { UpdateBoardDto } from "./dto/update-board.dto";
-import { Board } from "./entities/board.entity";
+import { CreatePostDto } from "./dto/create-post.dto";
+import { UpdatePostDto } from "./dto/update-post.dto";
+import { Post } from "./entities/post.entity";
 
-export class BoardService {
+export class PostService {
     constructor(
-        @InjectRepository(Board)
-        private readonly boardRepository: Repository<Board>
+        @InjectRepository(Post)
+        private readonly boardRepository: Repository<Post>
     ) { }
 
-    async create(createBoardDto: CreateBoardDto): Promise<Board> {
+    async create(createBoardDto: CreatePostDto): Promise<Post> {
         const createBoard = await this.boardRepository.save({
             title: createBoardDto.title,
             content: createBoardDto.content
@@ -19,7 +19,7 @@ export class BoardService {
         return createBoard;
     }
 
-    async update({ id, title, content }: UpdateBoardDto) {
+    async update({ id, title, content }: UpdatePostDto) {
         const existingBoard = await this.boardRepository.findOne({ id: id });
 
         existingBoard.title = title;

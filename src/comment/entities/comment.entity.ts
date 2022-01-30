@@ -12,7 +12,7 @@ import {
 } from "typeorm";
 import { ApiProperty } from "@nestjs/swagger";
 import { User } from "src/user/entities/user.entity";
-import { Board } from "src/board/entities/board.entity";
+import { Post } from "src/post/entities/post.entity";
 
 @Entity('comments')
 export class Comment {
@@ -25,14 +25,11 @@ export class Comment {
 
     /* Relations */
 
-    @ManyToOne(() => User, user => user.commentList, { onDelete: 'CASCADE' })
+    @ManyToOne(() => User, user => user.commentList)
     user!: User;
 
-    @ManyToOne(() => Board, board => board.commentList)
-    board!: Board;
-
-    @RelationId((comment: Comment) => comment.board) // you need to specify target relation
-    boardId: number;
+    @ManyToOne(() => Post, post => post.commentList)
+    post!: Post;
 
     /* Date Columns */
 
