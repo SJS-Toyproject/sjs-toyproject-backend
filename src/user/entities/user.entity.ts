@@ -11,7 +11,7 @@ import {
 import { ApiProperty } from "@nestjs/swagger";
 import { Area } from "src/area/entities/area.entity";
 import { Campus } from "src/campus/entities/campus.entity";
-import { Board } from 'src/board/entities/board.entity';
+import { Post } from 'src/post/entities/post.entity';
 import { Comment } from "src/comment/entities/comment.entity"
 import { Report } from "src/report/entities/report.entity"
 
@@ -51,8 +51,8 @@ export class User {
 
     /* Relations */
 
-    @OneToMany(() => Board, board => board.user)
-    boardList: Board[];
+    @OneToMany(() => Post, post => post.user)
+    postList: Post[];
 
     @OneToMany(() => Report, report => report.user)
     reportList: Report[];

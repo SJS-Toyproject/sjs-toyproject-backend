@@ -9,7 +9,7 @@ import { APP_FILTER } from '@nestjs/core';
 import { HttpExceptionFilter } from './http.exception';
 import { AreaModule } from './area/area.module';
 import { CampusModule } from './campus/campus.module';
-import { BoardModule } from './board/board.module';
+import { PostModule } from './post/post.module';
 import { CommentModule } from './comment/comment.module';
 
 @Module({
@@ -22,7 +22,7 @@ import { CommentModule } from './comment/comment.module';
     UserModule,
     AreaModule,
     CampusModule,
-    BoardModule,
+    PostModule,
     CommentModule
   ],
   controllers: [AppController],

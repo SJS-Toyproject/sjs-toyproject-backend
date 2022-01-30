@@ -2,19 +2,19 @@ import { Module } from "@nestjs/common";
 import { APP_FILTER } from "@nestjs/core";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { HttpExceptionFilter } from "src/http.exception";
-import { BoardController } from "./board.controller";
-import { BoardService } from "./board.service";
-import { Board } from "./entities/board.entity";
+import { PostController } from "./post.controller";
+import { PostService } from "./post.service";
+import { Post } from "./entities/post.entity";
 
 @Module({
-    imports: [TypeOrmModule.forFeature([Board])],
-    controllers: [BoardController],
+    imports: [TypeOrmModule.forFeature([Post])],
+    controllers: [PostController],
     providers: [
-        BoardService,
+        PostService,
         {
             provide: APP_FILTER,
             useClass: HttpExceptionFilter,
         },
     ]
 })
-export class BoardModule { }
+export class PostModule { }

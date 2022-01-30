@@ -1,7 +1,7 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { IsNotEmpty, IsNumber, IsString } from "class-validator";
 
-export class UpdateBoardDto {
+export class UpdatePostDto {
     @IsNumber()
     @IsNotEmpty()
     @ApiProperty({ example: 1, description: '게시글 Id' })

@@ -1,29 +1,28 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post, UseFilters } from "@nestjs/common";
 import { ApiTags } from "@nestjs/swagger";
 import { HttpExceptionFilter } from "src/http.exception";
-import { ApiDocs } from "./board.docs";
-import { BoardService } from "./board.service";
-import { CreateBoardDto } from "./dto/create-board.dto";
-import { UpdateBoardDto } from "./dto/update-board.dto";
-import { Board } from "./entities/board.entity";
+import { ApiDocs } from "./post.docs";
+import { PostService } from "./post.service";
+import { CreatePostDto } from "./dto/create-post.dto";
+import { UpdatePostDto } from "./dto/update-post.dto";
 
-@Controller('boards')
-@ApiTags('boards')
+@Controller('posts')
+@ApiTags('posts')
 @UseFilters(new HttpExceptionFilter())
-export class BoardController {
+export class PostController {
     constructor(
-        private readonly boardService: BoardService
+        private readonly boardService: PostService
     ) { }
 
     @Post()
     @ApiDocs.create('새로운 게시글 추가 API')
-    create(@Body() createBoardDto: CreateBoardDto): Promise<Board> {
+    create(@Body() createBoardDto: CreatePostDto) {
         return this.boardService.create(createBoardDto);
     }
 
     @Patch()
     @ApiDocs.update('게시글 제목/내용 수정 API')
-    update(@Body() updateBoardDto: UpdateBoardDto) {
+    update(@Body() updateBoardDto: UpdatePostDto) {
         return this.boardService.update(updateBoardDto);
     }
 
