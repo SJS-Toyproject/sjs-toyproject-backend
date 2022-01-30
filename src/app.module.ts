@@ -10,6 +10,7 @@ import { HttpExceptionFilter } from './http.exception';
 import { AreaModule } from './area/area.module';
 import { CampusModule } from './campus/campus.module';
 import { BoardModule } from './board/board.module';
+import { CommentModule } from './comment/comment.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { BoardModule } from './board/board.module';
     AreaModule,
     CampusModule,
     BoardModule,
+    CommentModule
   ],
   controllers: [AppController],
   providers: [
